@@ -18,7 +18,7 @@
 - HTML, CSS
 - React.js
 - Redux.js
-- ES6 JavaScript
+- ES6 JavaScript.
 
 ## Live Demo
 
