@@ -4,8 +4,9 @@ import './index.css';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './App';
+import rootReducer from './reducers/index';
 
-const initState = {
+export const initState = {
   books: [
     {
       id: Math.random(),
@@ -25,11 +26,9 @@ const initState = {
   ],
 };
 
-const rootReducer = (state = initState) => state;
-
-export default rootReducer;
 
 const store = createStore(rootReducer);
+
 
 ReactDOM.render(
   <Provider store={store}>
