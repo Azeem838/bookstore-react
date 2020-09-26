@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Book from './Book';
 
 const BookList = ({ books }) => {
-  const bookList = books.map(book => (
+  const bookList = books.map((book) => (
     <Book book={book} key={Math.random()} />
   ));
   return (
@@ -19,7 +19,7 @@ const BookList = ({ books }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   books: state.books,
 });
 

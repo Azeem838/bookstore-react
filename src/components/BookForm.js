@@ -4,21 +4,22 @@ import { createBook } from '../actions/index';
 
 class BookForm extends Component {
   state = {
+    id: Math.random(),
     title: null,
-    category: null
-  }
+    category: null,
+  };
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
-    this.props.createBook(this.state)
-  }
+    this.props.createBook(this.state);
+    e.target.reset();
+  };
 
   render() {
     const categories = [
@@ -30,7 +31,7 @@ class BookForm extends Component {
       'Learning',
       'Sci-Fi',
     ];
-    const catList = categories.map(cat => (
+    const catList = categories.map((cat) => (
       <option key={Math.random()} value={cat}>
         {cat}
       </option>
@@ -39,23 +40,34 @@ class BookForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="title">
           Title:
-        <input name="title" type="text" id="title" onChange={this.handleChange} />
+          <input
+            name="title"
+            type="text"
+            id="title"
+            onChange={this.handleChange}
+          />
         </label>
 
-        <select name="category" id="" onChange={this.handleChange} value={this.state.category}>
+        <select
+          name="category"
+          id=""
+          onChange={this.handleChange}
+          value={this.state.category}
+        >
           {catList}
         </select>
         <button type="submit">Submit</button>
-      </form >
+      </form>
     );
-  }
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createBook: (book) => { dispatch(createBook(book)) }
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createBook: (book) => {
+      dispatch(createBook(book));
+    },
+  };
+};
 
 export default connect(null, mapDispatchToProps)(BookForm);
