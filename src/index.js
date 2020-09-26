@@ -8,17 +8,17 @@ import rootReducer from './reducers/index';
 
 const initState = [
   {
-    id: Math.random(),
+    id: 0,
     title: 'test 1',
     category: 'action',
   },
   {
-    id: Math.random(),
+    id: 1,
     title: 'test 2',
     category: 'comedy',
   },
   {
-    id: Math.random(),
+    id: 2,
     title: 'test 3',
     category: 'adventure',
   },

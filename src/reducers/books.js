@@ -3,8 +3,7 @@ const books = (state = [], action) => {
     return [...state, action.book];
   }
   if (action.type === 'REMOVE_BOOK') {
-    const newBooks = state.books.filter((book) => book.id !== action.book.id);
-    return [newBooks];
+    return state.filter((book) => book.id !== action.id);
   }
   return state;
 };
