@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createBook } from '../actions/index';
 
 class BookForm extends Component {
-  state = {
-    id: Math.random(),
-    title: null,
-    category: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: null,
+      title: null,
+      category: '',
+    };
 
-  handleChange = (e) => {
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
     this.setState({
+      id: Math.random(),
       [e.target.name]: e.target.value,
     });
-  };
+  }
 
-  handleSubmit = (e) => {
+  handleSubmit(e) {
+    const { createBook } = this.props;
     e.preventDefault();
-    this.props.createBook(this.state);
+    createBook(this.state);
     e.target.reset();
-  };
+  }
 
   render() {
     const categories = [
@@ -31,11 +40,12 @@ class BookForm extends Component {
       'Learning',
       'Sci-Fi',
     ];
-    const catList = categories.map((cat) => (
+    const catList = categories.map(cat => (
       <option key={Math.random()} value={cat}>
         {cat}
       </option>
     ));
+    const { category } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="title">
@@ -48,12 +58,7 @@ class BookForm extends Component {
           />
         </label>
 
-        <select
-          name="category"
-          id=""
-          onChange={this.handleChange}
-          value={this.state.category}
-        >
+        <select name="category" onChange={this.handleChange} value={category}>
           {catList}
         </select>
         <button type="submit">Submit</button>
@@ -62,12 +67,14 @@ class BookForm extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createBook: (book) => {
-      dispatch(createBook(book));
-    },
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  createBook: book => {
+    dispatch(createBook(book));
+  },
+});
 
 export default connect(null, mapDispatchToProps)(BookForm);
+
+BookForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
+};

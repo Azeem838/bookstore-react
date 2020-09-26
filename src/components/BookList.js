@@ -5,48 +5,52 @@ import Book from './Book';
 import { removeBook } from '../actions/index';
 
 class BookList extends Component {
-  removeBook = (id) => {
-    this.props.removeBook(id);
-  };
+  constructor(props) {
+    super(props);
+
+    this.removeBook = this.removeBook.bind(this);
+  }
+
+  removeBook(id) {
+    const { removeBook } = this.props;
+    removeBook(id);
+  }
 
   render() {
-    console.log(this.props.books);
+    const { books } = this.props;
 
-    const bookList = this.props.books.map((book) => (
+    const bookList = books.map(book => (
       <Book removeBook={this.removeBook} book={book} key={Math.random()} />
     ));
     return (
       <table>
-        <tr>
-          <th>Book ID</th>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Remove Book</th>
-        </tr>
-        {bookList}
+        <thead>
+          <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Remove Book</th>
+          </tr>
+        </thead>
+        <tbody>{bookList}</tbody>
       </table>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   books: state.books,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    removeBook: (id) => {
-      dispatch(removeBook(id));
-    },
-  };
-};
-
-BookList.propTypes = {
-  books: PropTypes.objectOf,
-};
-
-BookList.defaultProps = {
-  books: [],
-};
+const mapDispatchToProps = dispatch => ({
+  removeBook: id => {
+    dispatch(removeBook(id));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
+
+BookList.propTypes = {
+  removeBook: PropTypes.func.isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
