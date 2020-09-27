@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import '../styles/form.css';
 import { createBook } from '../actions/index';
 import categories from '../constants/categories';
 
@@ -40,20 +41,29 @@ class BookForm extends Component {
     const { category } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="title">
-          Title:
+        <h3>ADD NEW BOOK</h3>
+        <div className="form-elements">
           <input
             name="title"
             type="text"
             id="title"
             onChange={this.handleChange}
+            placeholder="Book title"
+            className="new-book-input"
           />
-        </label>
 
-        <select name="category" onChange={this.handleChange} value={category}>
-          {catList}
-        </select>
-        <button type="submit">Submit</button>
+          <select
+            className="new-book-cat"
+            name="category"
+            onChange={this.handleChange}
+            value={category}
+          >
+            {catList}
+          </select>
+          <button className="add-book-btn" type="submit">
+            ADD BOOK
+          </button>
+        </div>
       </form>
     );
   }
