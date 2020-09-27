@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 
-const CategoryFilter = (props) => {
-  console.log(props)
+const CategoryFilter = ({ filter, handleFilter }) => {
   const categories = [
     'Action',
     'Biography',
@@ -10,7 +9,7 @@ const CategoryFilter = (props) => {
     'Horror',
     'Kids',
     'Learning',
-    'Sci-Fi',
+    'Sci-fi',
   ];
   const catList = categories.map(cat => (
     <option key={Math.random()} value={cat}>
@@ -18,9 +17,9 @@ const CategoryFilter = (props) => {
     </option>
   ));
   return (
-    <select name="category">
+    <select name="category" onChange={handleFilter} value={filter}>
       <option>
-        {props.filter}
+        {"All"}
       </option>
       {catList}
     </select>
