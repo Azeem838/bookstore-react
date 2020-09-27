@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createBook } from '../actions/index';
+import categories from '../constants/categories';
 
 class BookForm extends Component {
   constructor(props) {
@@ -24,20 +26,12 @@ class BookForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const { createBook } = this.props;
     createBook(this.state);
     e.target.reset();
   }
 
   render() {
-    const categories = [
-      'Action',
-      'Biography',
-      'History',
-      'Horror',
-      'Kids',
-      'Learning',
-      'Sci-fi',
-    ];
     const catList = categories.map(cat => (
       <option key={Math.random()} value={cat}>
         {cat}
@@ -70,5 +64,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(createBook(book));
   },
 });
+
+BookForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(BookForm);
