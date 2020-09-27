@@ -24,7 +24,6 @@ class BookForm extends Component {
   }
 
   handleSubmit(e) {
-    const { createBook } = this.props;
     e.preventDefault();
     createBook(this.state);
     e.target.reset();
@@ -38,7 +37,7 @@ class BookForm extends Component {
       'Horror',
       'Kids',
       'Learning',
-      'Sci-Fi',
+      'Sci-fi',
     ];
     const catList = categories.map(cat => (
       <option key={Math.random()} value={cat}>

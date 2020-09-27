@@ -10,17 +10,17 @@ const initState = [
   {
     id: Math.random(),
     title: 'test 1',
-    category: 'action',
+    category: 'Action',
   },
   {
     id: Math.random(),
     title: 'test 2',
-    category: 'comedy',
+    category: 'Sci-fi',
   },
   {
     id: Math.random(),
     title: 'test 3',
-    category: 'adventure',
+    category: 'Learning',
   },
 ];
 
