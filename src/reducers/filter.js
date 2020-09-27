@@ -1,0 +1,1 @@
+export const filter = (state="All", action) => state;
