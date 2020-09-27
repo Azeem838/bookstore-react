@@ -1,7 +1,9 @@
-export const filter = (state = "All", action) => {
+const filter = (state = 'All', action) => {
   if (action.category) {
-    return state = action.category
-  } else {
-    return state;
+    const newState = action.category;
+    return newState;
   }
+  return state;
 };
+
+export default filter;

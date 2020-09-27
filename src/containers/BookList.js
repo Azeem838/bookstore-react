@@ -14,11 +14,13 @@ class BookList extends Component {
   }
 
   removeBook(id) {
-    this.props.removeBook(id);
+    const { removeBook } = this.props;
+    removeBook(id);
   }
 
   handleFilter(e) {
-    this.props.changeFilter(e.target.value)
+    const { changeFilter } = this.props;
+    changeFilter(e.target.value);
   }
 
   render() {
@@ -30,9 +32,11 @@ class BookList extends Component {
         <Book removeBook={this.removeBook} book={book} key={Math.random()} />
       ));
     } else {
-      bookList = books.filter(book => book.category === filter).map(book => (
-        <Book removeBook={this.removeBook} book={book} key={Math.random()} />
-      ));
+      bookList = books
+        .filter(book => book.category === filter)
+        .map(book => (
+          <Book removeBook={this.removeBook} book={book} key={Math.random()} />
+        ));
     }
     return (
       <div>
@@ -46,7 +50,9 @@ class BookList extends Component {
               <th>Remove Book</th>
             </tr>
           </thead>
-          <tbody>{bookList.length ? bookList : "No Books in this Category!"}</tbody>
+          <tbody>
+            {bookList.length ? bookList : 'No Books in this Category!'}
+          </tbody>
         </table>
       </div>
     );
@@ -55,7 +61,7 @@ class BookList extends Component {
 
 const mapStateToProps = state => ({
   books: state.books,
-  filter: state.filter
+  filter: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -63,8 +69,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(removeBook(id));
   },
   changeFilter: filter => {
-    dispatch(changeFilter(filter))
-  }
+    dispatch(changeFilter(filter));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
@@ -72,4 +78,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(BookList);
 BookList.propTypes = {
   removeBook: PropTypes.func.isRequired,
   books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  changeFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };

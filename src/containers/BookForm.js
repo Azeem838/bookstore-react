@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { createBook } from '../actions/index';
 
 class BookForm extends Component {
@@ -73,7 +72,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(BookForm);
-
-BookForm.propTypes = {
-  createBook: PropTypes.func.isRequired,
-};
