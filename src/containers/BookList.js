@@ -38,6 +38,15 @@ class BookList extends Component {
           <Book removeBook={this.removeBook} book={book} key={Math.random()} />
         ));
     }
+
+    if (!bookList.length) {
+      bookList = (
+        <tr>
+          <td>No Books in this Category</td>
+        </tr>
+      );
+    }
+
     return (
       <div>
         <CategoryFilter handleFilter={this.handleFilter} />
@@ -50,9 +59,7 @@ class BookList extends Component {
               <th>Remove Book</th>
             </tr>
           </thead>
-          <tbody>
-            {bookList.length ? bookList : 'No Books in this Category!'}
-          </tbody>
+          <tbody>{bookList}</tbody>
         </table>
       </div>
     );
