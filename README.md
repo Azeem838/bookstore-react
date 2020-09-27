@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a>
+    <p align="center"> <img src="./app_screenshot.png" alt="bookstore-app"> </p>
+  </a>
 
-## Available Scripts
+  <h2 align="center">BookStore App</h2>
+  <h3 align="center">Built with React and Redux</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    <a href="https://github.com/Azeem838/bookstore-react/issues">Report Bug</a>
+    · 
+    <a href="https://github.com/Azeem838/bookstore-react/issues">Request Feature</a>
+  </p>
+</p>
 
-### `yarn start`
+## Built With
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- HTML, CSS
+- React.js
+- Redux.js
+- ES6 JavaScript.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Live Demo
 
-### `yarn test`
+[Live Demo Link](https://sleepy-fortress-15208.herokuapp.com/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `yarn build`
+To get a local copy up and running follow these simple example steps.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+To get a local copy up and running follow these simple example steps.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `yarn eject`
+Have a browser installed
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Setup
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Clone this repo with <code>git@github.com:Azeem838/bookstore-react.git</code>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Usage - Follow these
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. <code>cd</code> into the project directory
+2. run <code>npm install</code>
+3. Navigate to [localhost:8000](http://localhost:8000) in your browser.
+4. Enjoy :smiley:
 
-## Learn More
+:bust_in_silhouette: **Azeem Ahmed**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Github: [@Azeem838](https://github.com/Azeem838)
+- LinkedIn: [Azeem Ahmed](www.linkedin.com/in/azeemmahmed)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+:bust_in_silhouette: **Phillip Musiime**
 
-### Code Splitting
+- LinkedIn: [Phillip Musiime](https://www.linkedin.com/in/phillip-musiime/)
+- GitHub: [PhillipUg](https://github.com/PhillipUg)
+- Twitter: [@Phillip_Ug](https://twitter.com/Phillip_Ug)
+- E-mail: phillipmusiime@gmail.com
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## 🤝 Contributing
 
-### Analyzing the Bundle Size
+Contributions, issues, and feature requests are welcome!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Feel free to check the [issues page](https://github.com/Azeem838/bookstore-react/issues).
 
-### Making a Progressive Web App
+## Show your support
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Give a ⭐️ if you like this project!
 
-### Advanced Configuration
+## 📝 License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is [MIT](lic.url) licensed.
