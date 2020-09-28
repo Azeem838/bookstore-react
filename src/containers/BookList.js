@@ -1,35 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import '../styles/nav.css';
 import Book from '../components/Book';
+import { changeFilter, removeBook } from '../actions/index';
+import CategoryFilter from './CategoryFilter';
 
-<<<<<<< HEAD
-const BookList = ({ books }) => {
-  const bookList = books.map(book => (
-    <Book book={book} key={Math.random()} />
-  ));
-  return (
-    <table>
-      <tr>
-        <th>Book ID</th>
-        <th>Title</th>
-        <th>Category</th>
-      </tr>
-      {bookList}
-    </table>
-  );
-};
-
-const mapStateToProps = state => ({
-  books: state.books,
-});
-
-BookList.propTypes = {
-  books: PropTypes.objectOf,
-=======
 class BookList extends Component {
   constructor(props) {
     super(props);
@@ -53,13 +31,13 @@ class BookList extends Component {
     let bookList;
 
     if (filter === 'All') {
-      bookList = books.map(book => (
+      bookList = books.map((book) => (
         <Book removeBook={this.removeBook} book={book} key={Math.random()} />
       ));
     } else {
       bookList = books
-        .filter(book => book.category === filter)
-        .map(book => (
+        .filter((book) => book.category === filter)
+        .map((book) => (
           <Book removeBook={this.removeBook} book={book} key={Math.random()} />
         ));
     }
@@ -86,16 +64,16 @@ class BookList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   books: state.books,
   filter: state.filter,
 });
 
-const mapDispatchToProps = dispatch => ({
-  removeBook: id => {
+const mapDispatchToProps = (dispatch) => ({
+  removeBook: (id) => {
     dispatch(removeBook(id));
   },
-  changeFilter: filter => {
+  changeFilter: (filter) => {
     dispatch(changeFilter(filter));
   },
 });
@@ -107,11 +85,4 @@ BookList.propTypes = {
   books: PropTypes.arrayOf(PropTypes.object).isRequired,
   changeFilter: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
->>>>>>> milestone-4
 };
-
-BookList.defaultProps = {
-  books: [],
-};
-
-export default connect(mapStateToProps)(BookList);

@@ -6,23 +6,31 @@ import { createBook } from '../actions/index';
 import categories from '../constants/categories';
 
 class BookForm extends Component {
-  state = {
-    title: null,
-    category: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: null,
+      title: null,
+      category: '',
+    };
 
-  handleChange = (e) => {
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
     this.setState({
+      id: Math.random(),
       [e.target.name]: e.target.value,
     });
-  };
+  }
 
-  handleSubmit = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
     const { createBook } = this.props;
     createBook(this.state);
     e.target.reset();
-  };
+  }
 
   render() {
     const catList = categories.map((cat) => (
@@ -30,6 +38,7 @@ class BookForm extends Component {
         {cat}
       </option>
     ));
+    const { category } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <h3>ADD NEW BOOK</h3>
@@ -60,13 +69,11 @@ class BookForm extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createBook: (book) => {
-      dispatch(createBook(book));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  createBook: (book) => {
+    dispatch(createBook(book));
+  },
+});
 
 BookForm.propTypes = {
   createBook: PropTypes.func.isRequired,
