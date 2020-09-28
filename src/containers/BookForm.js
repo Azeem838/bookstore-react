@@ -33,7 +33,7 @@ class BookForm extends Component {
   }
 
   render() {
-    const catList = categories.map((cat) => (
+    const catList = categories.map(cat => (
       <option key={Math.random()} value={cat}>
         {cat}
       </option>
@@ -69,8 +69,8 @@ class BookForm extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  createBook: (book) => {
+const mapDispatchToProps = dispatch => ({
+  createBook: book => {
     dispatch(createBook(book));
   },
 });

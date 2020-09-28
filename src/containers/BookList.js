@@ -31,13 +31,13 @@ class BookList extends Component {
     let bookList;
 
     if (filter === 'All') {
-      bookList = books.map((book) => (
+      bookList = books.map(book => (
         <Book removeBook={this.removeBook} book={book} key={Math.random()} />
       ));
     } else {
       bookList = books
-        .filter((book) => book.category === filter)
-        .map((book) => (
+        .filter(book => book.category === filter)
+        .map(book => (
           <Book removeBook={this.removeBook} book={book} key={Math.random()} />
         ));
     }
@@ -64,16 +64,16 @@ class BookList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   books: state.books,
   filter: state.filter,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  removeBook: (id) => {
+const mapDispatchToProps = dispatch => ({
+  removeBook: id => {
     dispatch(removeBook(id));
   },
-  changeFilter: (filter) => {
+  changeFilter: filter => {
     dispatch(changeFilter(filter));
   },
 });
