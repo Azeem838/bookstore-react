@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import '../styles/nav.css';
 import Book from '../components/Book';
 
 <<<<<<< HEAD
@@ -62,27 +65,22 @@ class BookList extends Component {
     }
 
     if (!bookList.length) {
-      bookList = (
-        <tr>
-          <td>No Books in this Category</td>
-        </tr>
-      );
+      bookList = <div className="no-books">No Books in this Category</div>;
     }
 
     return (
-      <div>
-        <CategoryFilter handleFilter={this.handleFilter} />
-        <table>
-          <thead>
-            <tr>
-              <th>Book ID</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Remove Book</th>
-            </tr>
-          </thead>
-          <tbody>{bookList}</tbody>
-        </table>
+      <div className="main-container">
+        <div className="nav-container">
+          <div className="logo">Magic-Books Inc.</div>
+          <div className="books">Books</div>
+          <div className="categories">
+            <CategoryFilter handleFilter={this.handleFilter} />
+          </div>
+          <div className="avatar">
+            <FontAwesomeIcon icon={faUser} />
+          </div>
+        </div>
+        {bookList}
       </div>
     );
   }
