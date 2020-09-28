@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createBook } from '../actions/index';
+import categories from '../constants/categories';
 
 class BookForm extends Component {
   state = {
@@ -16,6 +17,7 @@ class BookForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     console.log(this.state)
     this.props.createBook(this.state)
   }
@@ -30,6 +32,14 @@ class BookForm extends Component {
       'Learning',
       'Sci-Fi',
     ];
+=======
+    const { createBook } = this.props;
+    createBook(this.state);
+    e.target.reset();
+  }
+
+  render() {
+>>>>>>> milestone-4
     const catList = categories.map(cat => (
       <option key={Math.random()} value={cat}>
         {cat}
@@ -58,4 +68,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
+<<<<<<< HEAD
+=======
+BookForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
+};
+
+>>>>>>> milestone-4
 export default connect(null, mapDispatchToProps)(BookForm);
