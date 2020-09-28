@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import bookReducer from './books';
+import books from './books';
+import { filter } from './filter';
 
-const rootReducer = combineReducers({ bookReducer });
+const rootReducer = combineReducers({ books, filter });
 
 export default rootReducer;
