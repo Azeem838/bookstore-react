@@ -1,17 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.css';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import rootReducer from './reducers/index';
+
+const initState = [
+  {
+    id: Math.random(),
+    title: 'test 1',
+    category: 'Action',
+  },
+  {
+    id: Math.random(),
+    title: 'test 2',
+    category: 'Sci-fi',
+  },
+  {
+    id: Math.random(),
+    title: 'test 3',
+    category: 'Learning',
+  },
+];
+
+const store = createStore(rootReducer, { books: initState });
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById('root'),
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

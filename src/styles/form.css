@@ -1,0 +1,56 @@
+form {
+  width: 1200px;
+  margin: 2.7em auto;
+  padding: 2em 0;
+  border-top: 2px solid var(--grey-heading);
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #888;
+  margin-bottom: 1em;
+}
+
+.new-book-input {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  width: 664px;
+  height: 45px;
+  border: 1px solid var(--grey-heading);
+  font-size: 16px;
+  padding: 1em;
+  color: #121212;
+  opacity: 0.8;
+}
+
+.new-book-cat {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  height: 45px;
+  width: 285px;
+  color: #121212;
+  opacity: 0.8;
+  border: 1px solid var(--grey-heading);
+  font-size: 16px;
+  background: white;
+  padding: 0.3em;
+}
+
+.add-book-btn {
+  font-family: 'Roboto Slab', serif;
+  background: var(--blue-color);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  height: 45px;
+  width: 184px;
+  border: none;
+  padding: 0.7em 1.5em;
+  border-radius: 3px;
+}
+
+.form-elements {
+  display: flex;
+  justify-content: space-between;
+}

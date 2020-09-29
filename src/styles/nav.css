@@ -1,0 +1,40 @@
+.nav-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 2em 22.2em;
+  border-bottom: 2px solid var(--grey-heading);
+  background: #fff;
+  align-items: center;
+}
+
+.logo {
+  color: var(--blue-color);
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.books {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #121212;
+  margin-left: 3em;
+  font-weight: 400;
+}
+
+.categories {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #121212;
+  opacity: 0.5;
+  font-size: 13px;
+  margin-left: 3em;
+}
+
+.avatar {
+  margin-left: auto;
+  border: 1px solid rgba(12, 12, 12, 0.1);
+  border-radius: 50%;
+  padding: 0.8em;
+  color: var(--blue-color);
+}
