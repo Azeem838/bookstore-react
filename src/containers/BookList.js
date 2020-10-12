@@ -31,6 +31,10 @@ class BookList extends Component {
   removeBook(id) {
     const { removeBook } = this.props;
     removeBook(id);
+    const deleteURL = `http://localhost:3000/api/v1/books/${id}`;
+    fetch(deleteURL, {
+      method: 'DELETE',
+    });
   }
 
   handleFilter(e) {
