@@ -55,17 +55,18 @@ class BookForm extends Component {
         <h3>ADD NEW BOOK</h3>
         <div className="form-elements">
           <input
-            name="title"
+            name="book[title]"
             type="text"
             id="title"
             onChange={this.handleChange}
             placeholder="Book title"
             className="new-book-input"
+            required
           />
 
           <select
             className="new-book-cat"
-            name="category"
+            name="book[category]"
             onChange={this.handleChange}
             value={category}
           >
