@@ -1,30 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import App from './App';
 import rootReducer from './reducers/index';
 
-const initState = [
-  {
-    id: Math.random(),
-    title: 'test 1',
-    category: 'Action',
-  },
-  {
-    id: Math.random(),
-    title: 'test 2',
-    category: 'Sci-fi',
-  },
-  {
-    id: Math.random(),
-    title: 'test 3',
-    category: 'Learning',
-  },
-];
-
-const store = createStore(rootReducer, { books: initState });
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>

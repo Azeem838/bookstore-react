@@ -9,9 +9,8 @@ class BookForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: null,
       title: null,
-      category: '',
+      category: 'Action',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,20 +19,32 @@ class BookForm extends Component {
 
   handleChange(e) {
     this.setState({
-      id: Math.random(),
       [e.target.name]: e.target.value,
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const { createBook } = this.props;
-    createBook(this.state);
+    this.formSubmit(e.target);
     e.target.reset();
   }
 
+  async formSubmit(formData) {
+    const { createBook } = this.props;
+    const data = new FormData(formData);
+    await fetch('http://localhost:3000/api/v1/books', {
+      method: 'POST',
+      mode: 'cors',
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((r) => createBook(r));
+  }
+
   render() {
-    const catList = categories.map(cat => (
+    const catList = categories.map((cat) => (
       <option key={Math.random()} value={cat}>
         {cat}
       </option>
@@ -69,8 +80,8 @@ class BookForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  createBook: book => {
+const mapDispatchToProps = (dispatch) => ({
+  createBook: (book) => {
     dispatch(createBook(book));
   },
 });

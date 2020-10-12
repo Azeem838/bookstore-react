@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import '../styles/nav.css';
 import Book from '../components/Book';
-import { changeFilter, removeBook } from '../actions/index';
+import { changeFilter, removeBook, getBooks } from '../actions/index';
 import CategoryFilter from './CategoryFilter';
 
 class BookList extends Component {
@@ -14,6 +14,18 @@ class BookList extends Component {
 
     this.removeBook = this.removeBook.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadBooks();
+  }
+
+  loadBooks() {
+    fetch('http://localhost:3000/api/v1/books')
+      .then((response) => response.json())
+      .then((data) => {
+        this.props.getBooks(data);
+      });
   }
 
   removeBook(id) {
@@ -31,14 +43,14 @@ class BookList extends Component {
     let bookList;
 
     if (filter === 'All') {
-      bookList = books.map(book => (
-        <Book removeBook={this.removeBook} book={book} key={Math.random()} />
+      bookList = books.map((book) => (
+        <Book removeBook={this.removeBook} book={book} key={book.id} />
       ));
     } else {
       bookList = books
-        .filter(book => book.category === filter)
-        .map(book => (
-          <Book removeBook={this.removeBook} book={book} key={Math.random()} />
+        .filter((book) => book.category === filter)
+        .map((book) => (
+          <Book removeBook={this.removeBook} book={book} key={book.id} />
         ));
     }
 
@@ -64,17 +76,20 @@ class BookList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   books: state.books,
   filter: state.filter,
 });
 
-const mapDispatchToProps = dispatch => ({
-  removeBook: id => {
+const mapDispatchToProps = (dispatch) => ({
+  removeBook: (id) => {
     dispatch(removeBook(id));
   },
-  changeFilter: filter => {
+  changeFilter: (filter) => {
     dispatch(changeFilter(filter));
+  },
+  getBooks: (books) => {
+    dispatch(getBooks(books));
   },
 });
 
